@@ -1,0 +1,106 @@
+<svg width="980" height="720" viewBox="0 0 980 720" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" font-size="14">
+  <defs>
+    <marker id="one" markerWidth="14" markerHeight="14" refX="7" refY="7" orient="auto">
+      <line x1="7" y1="2" x2="7" y2="12" stroke="#555" stroke-width="1.4"/>
+    </marker>
+    <marker id="many" markerWidth="16" markerHeight="16" refX="1" refY="8" orient="auto">
+      <path d="M14,2 L1,8 L14,14" fill="none" stroke="#555" stroke-width="1.4"/>
+      <line x1="14" y1="8" x2="1" y2="8" stroke="#555" stroke-width="1.4"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="980" height="720" fill="white"/>
+
+  <style>
+    .box { fill: white; stroke: #333; stroke-width: 1.2; }
+    .header { fill: white; stroke: #333; stroke-width: 1.2; }
+    .title { font-weight: bold; text-anchor: middle; fill: #111; }
+    .field { text-anchor: start; fill: #111; }
+    .pk { font-weight: bold; text-decoration: underline; }
+    .tag { text-anchor: end; fill: #333; }
+    .sep { stroke: #333; stroke-width: 1; }
+    .rel { fill: none; stroke: #555; stroke-width: 1.3; }
+  </style>
+
+  <!-- relationship lines -->
+  <line class="rel" x1="290" y1="192" x2="400" y2="270" marker-start="url(#one)" marker-end="url(#many)"/>
+  <line class="rel" x1="710" y1="120" x2="600" y2="270" marker-start="url(#one)" marker-end="url(#many)"/>
+  <line class="rel" x1="710" y1="470" x2="600" y2="470" marker-start="url(#one)" marker-end="url(#many)"/>
+  <line class="rel" x1="250" y1="470" x2="400" y2="470" marker-start="url(#one)" marker-end="url(#many)"/>
+  <line class="rel" x1="500" y1="580" x2="500" y2="470" marker-start="url(#one)" marker-end="url(#many)"/>
+
+  <!-- dim_tiempo (top-left) -->
+  <g>
+    <rect class="box" x="40" y="40" width="250" height="152"/>
+    <rect class="header" x="40" y="40" width="250" height="32"/>
+    <text class="title" x="165" y="61">dim_tiempo</text>
+    <line class="sep" x1="40" y1="72" x2="290" y2="72"/>
+    <text class="field pk" x="52" y="88">time_id</text><text class="tag" x="278" y="88">PK</text>
+    <line class="sep" x1="40" y1="96" x2="290" y2="96"/>
+    <text class="field" x="52" y="112">Timestamp</text>
+    <text class="field" x="52" y="136">año, mes, día, hora</text>
+    <text class="field" x="52" y="160">día_semana</text>
+    <text class="field" x="52" y="184">es_fin_semana</text>
+  </g>
+
+  <!-- dim_activo (top-right) -->
+  <g>
+    <rect class="box" x="710" y="40" width="210" height="80"/>
+    <rect class="header" x="710" y="40" width="210" height="32"/>
+    <text class="title" x="815" y="61">dim_activo</text>
+    <line class="sep" x1="710" y1="72" x2="920" y2="72"/>
+    <text class="field pk" x="722" y="88">asset_key</text><text class="tag" x="908" y="88">PK</text>
+    <line class="sep" x1="710" y1="96" x2="920" y2="96"/>
+    <text class="field" x="722" y="112">Asset_ID</text>
+  </g>
+
+  <!-- dim_estado_envio (right, below dim_activo) -->
+  <g>
+    <rect class="box" x="710" y="470" width="230" height="80"/>
+    <rect class="header" x="710" y="470" width="230" height="32"/>
+    <text class="title" x="825" y="491">dim_estado_envio</text>
+    <line class="sep" x1="710" y1="502" x2="940" y2="502"/>
+    <text class="field pk" x="722" y="518">shipment_status_key</text><text class="tag" x="928" y="518">PK</text>
+    <line class="sep" x1="710" y1="526" x2="940" y2="526"/>
+    <text class="field" x="722" y="542">Shipment_Status</text>
+  </g>
+
+  <!-- dim_trafico (bottom-left) -->
+  <g>
+    <rect class="box" x="40" y="470" width="210" height="80"/>
+    <rect class="header" x="40" y="470" width="210" height="32"/>
+    <text class="title" x="145" y="491">dim_trafico</text>
+    <line class="sep" x1="40" y1="502" x2="250" y2="502"/>
+    <text class="field pk" x="52" y="518">traffic_status_key</text><text class="tag" x="238" y="518">PK</text>
+    <line class="sep" x1="40" y1="526" x2="250" y2="526"/>
+    <text class="field" x="52" y="542">Traffic_Status</text>
+  </g>
+
+  <!-- dim_demora (bottom-center) -->
+  <g>
+    <rect class="box" x="375" y="580" width="250" height="104"/>
+    <rect class="header" x="375" y="580" width="250" height="32"/>
+    <text class="title" x="500" y="601">dim_demora</text>
+    <line class="sep" x1="375" y1="612" x2="625" y2="612"/>
+    <text class="field pk" x="387" y="628">delay_key</text><text class="tag" x="613" y="628">PK</text>
+    <line class="sep" x1="375" y1="636" x2="625" y2="636"/>
+    <text class="field" x="387" y="652">Logistics_Delay</text>
+    <text class="field" x="387" y="676">Logistics_Delay_Reason</text>
+  </g>
+
+  <!-- fact_envio_evento (center) -->
+  <g>
+    <rect class="box" x="360" y="270" width="280" height="200"/>
+    <rect class="header" x="360" y="270" width="280" height="32"/>
+    <text class="title" x="500" y="291">fact_envio_evento</text>
+    <line class="sep" x1="360" y1="302" x2="640" y2="302"/>
+    <text class="field" x="372" y="318">_row_id</text>
+    <text class="field" x="372" y="342">time_id</text><text class="tag" x="628" y="342">FK</text>
+    <text class="field" x="372" y="366">asset_key</text><text class="tag" x="628" y="366">FK</text>
+    <text class="field" x="372" y="390">shipment_status_key</text><text class="tag" x="628" y="390">FK</text>
+    <text class="field" x="372" y="414">traffic_status_key</text><text class="tag" x="628" y="414">FK</text>
+    <text class="field" x="372" y="438">delay_key</text><text class="tag" x="628" y="438">FK</text>
+    <line class="sep" x1="360" y1="446" x2="640" y2="446"/>
+    <text class="field" x="372" y="462">10 métricas operativas</text>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+data/raw/*.csv
+bronze/data/*.parquet
+silver/data/*.parquet
+silver/data/dq_report.csv
+gold/data/*.parquet
+__pycache__/
